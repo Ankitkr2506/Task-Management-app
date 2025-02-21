@@ -23,7 +23,7 @@ const InputData = ({ InputDiv, setInputDiv, UpdatedData, setUpdatedData }) => {
       alert("All fields are required");
     } else {
       try {
-        const response = await axios.post("http://localhost:1000/api/v2/create-task", Data, { headers });
+        const response = await axios.post("https://task-management-app-97f0.onrender.com/api/v2/create-task", Data, { headers });
         console.log("Submitted Task:", response.data); // Log the submitted task
         setData({ title: "", desc: "" }); // Reset the form
         setInputDiv("hidden"); // Hide the input form
@@ -37,7 +37,7 @@ const InputData = ({ InputDiv, setInputDiv, UpdatedData, setUpdatedData }) => {
     alert("All fields are required");
   } else {
     try {
-      await axios.put(`http://localhost:1000/api/v2/update-task/${UpdatedData.id}`, Data, { headers });
+      await axios.put(`https://task-management-app-97f0.onrender.com/api/v2/update-task/${UpdatedData.id}`, Data, { headers });
       setUpdatedData({
         id: "",
         title: "",
