@@ -20,7 +20,7 @@ const Signup = () => {
         {
           alert("All fields are required")
         }else{
-         const response = await axios.post("http://localhost:1000/api/v1/sign-in", Data);
+         const response = await axios.post("https://task-management-app-97f0.onrender.com/api/v1/sign-in", Data);
          setData({username:"",email:"",password:""});
          console.log(response);
          history("/login");

@@ -11,7 +11,7 @@ const IncompleteTasks = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get("http://localhost:1000/api/v2/get-incomplete-tasks", { headers });
+        const response = await axios.get("https://task-management-app-97f0.onrender.com/api/v2/get-incomplete-tasks", { headers });
         setData(response.data.data);
       } catch (error) {
         console.error('Error fetching tasks:', error);
