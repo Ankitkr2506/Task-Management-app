@@ -3,11 +3,15 @@ const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 //SignIn APIs
-router.post("/sign-in", async (req, res) => { // Corrected from requestAnimationFrame to req
+router.post("/sign-up", async (req, res) => {
   try {
-    const { username, email, password } = req.body; // Combined destructuring for cleaner access
+    const { username, email, password } = req.body;
+    console.log("Received body:", req.body); // 🐛 Debug log
 
-    // Check for existing user
+    if (!username || !email || !password) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
     const existingUser = await User.findOne({ username });
     const existingEmail = await User.findOne({ email });
 
@@ -20,22 +24,25 @@ router.post("/sign-in", async (req, res) => { // Corrected from requestAnimation
     if (existingEmail) {
       return res.status(400).json({ message: "Email already exists" });
     }
-    const hashPass= await bcrypt.hash(req.body.password, 10);
-    // Create new user
+
+    const hashPass = await bcrypt.hash(password, 10);
+
     const newUser = new User({
-      username: req.body.username,
-      email:req.body.email,
-      password:hashPass,
+      username,
+      email,
+      password: hashPass,
     });
 
     await newUser.save();
-    return res.status(200).json({ message: "Signin successful" });
+
+    return res.status(200).json({ message: "Signup successful" });
 
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Internal server error" }); // Changed to 500 for internal errors
+    console.error("Signup error:", error); // 🔥 Log the actual error
+    res.status(500).json({ message: "Internal server error" });
   }
 });
+
 
 //Login
 router.post("/log-in", async(req, res) =>{
