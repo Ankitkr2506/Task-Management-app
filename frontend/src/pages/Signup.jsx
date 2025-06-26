@@ -28,7 +28,7 @@ const Signup = () => {
         return;
       }
 
-      const response = await axios.post("http://localhost:1000/api/v1/sign-in", Data);
+      const response = await axios.post("https://task-management-app-nine-ashen.vercel.app/api/v1/sign-in", Data);
 
       console.log("Signup success:", response.data);
       setData({ username: "", email: "", password: "" });

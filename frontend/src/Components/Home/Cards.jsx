@@ -14,7 +14,7 @@ const Cards = ({ home, setInputDiv, data, setUpdatedData}) => {
 
   const handleImportant = async (id) => {
     try {
-    const response= await axios.put(`http://localhost:1000/api/v2/update-imp-task/${id}`, {}, { headers });
+    const response= await axios.put(`https://task-management-app-nine-ashen.vercel.app/api/v2/update-imp-task/${id}`, {}, { headers });
     console.log(response);
     } catch (error) {
       console.log('Error completing task:', error);
@@ -22,7 +22,7 @@ const Cards = ({ home, setInputDiv, data, setUpdatedData}) => {
   };
   const handleCompleteTask = async (id) => {
     try {
-     await axios.put(`http://localhost:1000/api/v2/update-complete-task/${id}`, {}, { headers });
+     await axios.put(`https://task-management-app-nine-ashen.vercel.app/api/v2/update-complete-task/${id}`, {}, { headers });
     
     } catch (error) {
       console.log('Error completing task:', error);
@@ -30,7 +30,7 @@ const Cards = ({ home, setInputDiv, data, setUpdatedData}) => {
   };
   const deleteTask = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:1000//api/v2/delete-task/${id}`, { headers });
+      const response = await axios.delete(`https://task-management-app-nine-ashen.vercel.app/api/v2/delete-task/${id}`, { headers });
       console.log(response.data.message);
     } catch (error) {
       console.log('Error deleting task:', error);

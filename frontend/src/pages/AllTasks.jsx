@@ -18,7 +18,7 @@ const AllTasks = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get("http://localhost:1000/api/v2/get-all-tasks", { headers, });
+        const response = await axios.get("https://task-management-app-nine-ashen.vercel.app/api/v2/get-all-tasks", { headers, });
         setData(response.data.data);
       } catch (error) {
         console.error('Error fetching tasks:', error);
